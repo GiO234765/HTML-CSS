@@ -1,0 +1,22 @@
+.Apply-button {
+    background-color: rgb(41, 41, 126);
+    border: none;
+    color:white;
+    width: 200px;
+    height: 35px;
+    border-radius: 20px;
+    &:hover {
+        background-color: rgb(41, 41, 126,0.8);
+    }
+}
+.Save-button {
+    background-color: transparent;
+    color: rgb(41, 41, 126);
+    border: 1px solid rgb(41, 41, 126);
+    width: 100px;
+    height: 35px;
+    border-radius: 20px;
+    &:hover {
+        background-color: rgb(41, 41, 126,0.4);
+    }
+}

@@ -1,0 +1,33 @@
+.sub-button {
+    background-color: red;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    padding: 12px 20px;
+    cursor: pointer;
+    &:hover {
+        background-color: darkred;
+    }
+}
+
+.join-button {
+    background-color: transparent;
+    color: blue;
+    border: 1px solid blue;
+    border-radius: 2px;
+    padding: 12px 45px;
+    &:hover {
+        background-color: gray;
+    }
+}
+.Tweet-button {
+    background-color: rgb(63, 63, 247);
+    color: white;
+    font-weight: bold;
+    border-radius:  20px;
+    border: none;
+    padding: 12px 45px;
+    &:hover {
+        background-color: gray;
+    }
+}

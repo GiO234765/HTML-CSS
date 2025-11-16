@@ -1,0 +1,25 @@
+.Get-button {
+    background-color: rgb(121,82,179);
+    border: none;
+    color: white;
+    cursor: pointer;
+    width: 120px;
+    height: 35px;
+    border-radius: 5px;
+    &:hover {
+        background-color: rgb(121,82,179,0.8);
+    }
+}
+.Downlaod-button {
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    width: 120px;
+    height: 35px;
+    border-radius: 5px;
+    &:hover {
+        background-color: rgb(128,128,128,0.8);
+    }
+}

@@ -1,0 +1,22 @@
+.stock-style{
+    color: rgb(0,118,0);
+}
+.Add-button {
+    background-color: rgb(255,216,20);
+    border: none;
+    width: 100px;
+    height: 35px;
+    border-radius: 15px;
+    color: black;
+}
+.Buy-button{
+    background-color: rgb(255,164,28);
+    border: none;
+    width: 100px;
+    height: 35px;
+    color: black;
+    border-radius: 15px;
+}
+.Amazon-link {
+    color: rgb(0,113,133);
+}

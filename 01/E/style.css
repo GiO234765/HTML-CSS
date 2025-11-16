@@ -1,0 +1,17 @@
+.Apply-button {
+    background-color: rgb(10,102,194);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    width: 250px;
+    height: 35px;
+}
+.Save-button {
+    background-color: transparent;
+    border: 1px solid rgb(10,102,194);
+    border-radius: 35px;
+    width: 100px;
+    height: 35px;
+    font-weight: bold;
+    color: rgb(10,102,194);
+}

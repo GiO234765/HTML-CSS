@@ -5,3 +5,10 @@
     height: 35px;
     border: none;
 }
+.Add-button {
+    background-color: hsl(255, 216, 20);
+    color: black;
+    border: none;
+    border-radius: 25%;
+
+}

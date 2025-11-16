@@ -1,0 +1,12 @@
+.Add-button {
+    background-color:rgb(255,216,20);
+    border: none;
+    color: black;
+    width: 150px;
+    height: 35px;
+    cursor: pointer;
+    border-radius: 15px;
+    &:hover {
+        background-color: rgb(255,216,20,0.8);;
+    }
+}
