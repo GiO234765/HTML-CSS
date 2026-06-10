@@ -1,0 +1,96 @@
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Itachi Sharingan</title>
+
+    <style>
+      body {
+        background: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .eye {
+        width: 200px;
+        height: 200px;
+        background: #8b0000;
+        border-radius: 50%;
+        position: relative;
+        box-shadow: 0 0 30px red;
+        animation: spin 4s linear infinite;
+      }
+
+      /* center pupil */
+      .eye::after {
+        content: "";
+        width: 40px;
+        height: 40px;
+        background: black;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /* tomoe base */
+      .tomoe {
+        width: 20px;
+        height: 20px;
+        background: black;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      /* positions */
+      .t1 {
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .t2 {
+        bottom: 30px;
+        left: 30px;
+      }
+
+      .t3 {
+        bottom: 30px;
+        right: 30px;
+      }
+
+      /* small tail for tomoe */
+      .tomoe::after {
+        content: "";
+        width: 10px;
+        height: 20px;
+        background: black;
+        position: absolute;
+        border-radius: 50%;
+        top: -5px;
+        left: 5px;
+        transform: rotate(45deg);
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="eye">
+      <div class="tomoe t1"></div>
+      <div class="tomoe t2"></div>
+      <div class="tomoe t3"></div>
+    </div>
+  </body>
+</html>

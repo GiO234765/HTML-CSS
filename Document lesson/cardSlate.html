@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card</title>
+
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #eee;
+      }
+
+      .main-container {
+        border: none;
+        position: relative;
+        width: 300px;
+        height: 360px;
+        border-radius: 20px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow:
+          rgba(0, 0, 0, 0.16) 0px 1px 4px,
+          rgb(51, 51, 51) 0px 0px 0px 3px;
+      }
+
+      /* image */
+      .image {
+        width: 100%;
+        padding: 10px;
+      }
+
+      /* hover cart */
+      .cart {
+        
+        font-family: Arial, Helvetica, sans-serif;
+        gap: 5px;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        right: -160px;
+        transform: translateY(-50%);
+        background: #1e88ff;
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: 25px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.4s ease;
+      }
+
+      /* hover animation */
+      .main-container:hover .cart {
+        right: 20px;
+      }
+
+      h2 {
+        padding: 0 15px;
+        margin: 10px 0 5px;
+      }
+
+      .stars {
+        display: flex;
+        padding: 0 15px;
+      }
+
+      .discount {
+        padding: 10px 15px;
+      }
+
+      .discount p {
+        text-decoration: line-through;
+        color: #999;
+        margin: 0;
+      }
+
+      .discount {
+        display: flex;
+        font-family: Arial, Helvetica, sans-serif;
+        align-items: center;
+      }
+      .discount h2 {
+        margin-left: 0;
+      }
+      h2 {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <img
+        src="data:image/jpeg;base64,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"
+        alt="phone"
+        class="image" />
+
+      <div class="cart">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="20px"
+          viewBox="0 -960 960 960"
+          width="20px"
+          fill="#1f1f1f">
+          <path
+            d="M444-576v-132H312v-72h132v-132h72v132h132v72H516v132h-72ZM213-117.21q-21-21.21-21-51T213.21-219q21.21-21 51-21T315-218.79q21 21.21 21 51T314.79-117q-21.21 21-51 21T213-117.21Zm432 0q-21-21.21-21-51T645.21-219q21.21-21 51-21T747-218.79q21 21.21 21 51T746.79-117q-21.21 21-51 21T645-117.21ZM48-792v-72h133l155 360h301l113-264h78L703-476q-9 20-26.5 32T637-432H317l-42 72h493v72H276q-42 0-63-36.5t0-71.5l52-90-131-306H48Z" />
+        </svg>
+        Add to Cart
+      </div>
+
+      <h2>Iphone 17</h2>
+
+      <div class="stars">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="20px"
+          viewBox="0 -960 960 960"
+          width="20px"
+          fill="#1f1f1f">
+          <path
+            d="m352-293 128-76 129 76-34-144 111-95-147-13-59-137-59 137-147 13 112 95-34 144ZM243-144l63-266L96-589l276-24 108-251 108 252 276 23-210 179 63 266-237-141-237 141Zm237-333Z" />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="20px"
+          viewBox="0 -960 960 960"
+          width="20px"
+          fill="#1f1f1f">
+          <path
+            d="m352-293 128-76 129 76-34-144 111-95-147-13-59-137-59 137-147 13 112 95-34 144ZM243-144l63-266L96-589l276-24 108-251 108 252 276 23-210 179 63 266-237-141-237 141Zm237-333Z" />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="20px"
+          viewBox="0 -960 960 960"
+          width="20px"
+          fill="#1f1f1f">
+          <path
+            d="m352-293 128-76 129 76-34-144 111-95-147-13-59-137-59 137-147 13 112 95-34 144ZM243-144l63-266L96-589l276-24 108-251 108 252 276 23-210 179 63 266-237-141-237 141Zm237-333Z" />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="20px"
+          viewBox="0 -960 960 960"
+          width="20px"
+          fill="#1f1f1f">
+          <path
+            d="m352-293 128-76 129 76-34-144 111-95-147-13-59-137-59 137-147 13 112 95-34 144ZM243-144l63-266L96-589l276-24 108-251 108 252 276 23-210 179 63 266-237-141-237 141Zm237-333Z" />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="20px"
+          viewBox="0 -960 960 960"
+          width="20px"
+          fill="#1f1f1f">
+          <path
+            d="m352-293 128-76 129 76-34-144 111-95-147-13-59-137-59 137-147 13 112 95-34 144ZM243-144l63-266L96-589l276-24 108-251 108 252 276 23-210 179 63 266-237-141-237 141Zm237-333Z" />
+        </svg>
+      </div>
+
+      <div class="discount">
+        <p>$1,666</p>
+        <h2>$999</h2>
+      </div>
+    </div>
+  </body>
+</html>

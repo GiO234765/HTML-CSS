@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Estate Card</title>
+
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #e7e7e7;
+        font-family: Arial, sans-serif;
+      }
+
+      /* CARD */
+      .card {
+        width: 340px;
+        background: white;
+        border-radius: 20px;
+        height: 400px;
+        padding: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      /* IMAGE */
+      .image-box {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+      }
+
+      .slider {
+        display: flex;
+        transition: transform 0.8s ease;
+      }
+
+      .slider img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        min-width: 100%;
+      }
+
+      /* PRIME LABEL */
+      .label {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: white;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      /* DOTS */
+      .dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .dots span {
+        width: 7px;
+        height: 7px;
+        background: white;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 3px;
+        opacity: 0.5;
+      }
+
+      .dots .active {
+        opacity: 1;
+      }
+
+      /* PRICE */
+      .price {
+        margin-top: 10px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .sub-text {
+        color: gray;
+        font-size: 13px;
+      }
+
+      /* LOCATION */
+      .location {
+        margin-top: 5px;
+        font-size: 14px;
+      }
+
+      /* LINE */
+      hr {
+        border: none;
+        border-top: 1px solid #ddd;
+        margin: 10px 0;
+      }
+
+      /* INFO */
+      .info {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+      }
+
+      .info div {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+      }
+
+      /* AUTHOR */
+      .footer {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        color: gray;
+      }
+
+      /* BUTTON */
+      button {
+        margin-top: 10px;
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 25px;
+        background: linear-gradient(to right, #222, #555);
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      .wa {
+        color: black;
+      }
+      .li {
+        color: gray;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <!-- IMAGE SLIDER -->
+      <div class="image-box">
+        <div class="slider" id="slider">
+          <img src="https://picsum.photos/id/1018/600/400" />
+          <img src="https://picsum.photos/id/1015/600/400" />
+          <img src="https://picsum.photos/id/1019/600/400" />
+        </div>
+
+        <div class="label">⭐ Prime Pick</div>
+
+        <!-- DOTS -->
+        <div class="dots">
+          <span class="active"></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <!-- PRICE -->
+      <div class="price">$250,000 <span class="sub-text">List price</span></div>
+
+      <!-- LOCATION -->
+      <div class="location">
+        <strong>Guillaume Briard</strong> • Mr. Mun Samith, 1063 AG
+      </div>
+
+      <hr />
+
+      <!-- INFO -->
+      <div class="info">
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="20px"
+            viewBox="0 -960 960 960"
+            width="20px"
+            fill="#1f1f1f">
+            <path
+              d="M221.23-216v-172h181.54v172-172H221.23v172ZM640-535ZM88-184v-324l224-162.77 230.54 167.23q-4.08 7.08-8 13.66-3.92 6.57-8 13.65L312-629.46 120-492v276h101.23v-172h181.54v204h-32v-172H253.23v172H88Zm784-592v333.69q-8.31-8-15.92-12.54-7.62-4.53-16.08-10.23V-744H455.38v88.54l-32-22.77V-776H872ZM705.23-609.23h53.54v-53.54h-53.54v53.54ZM719.77-88q-63.62 0-107.69-44.3Q568-176.61 568-240.23q0-63.62 44.3-107.69Q656.61-392 720.23-392q63.62 0 107.69 44.3Q872-303.39 872-239.77q0 63.62-44.3 107.69Q783.39-88 719.77-88Zm-19.15-60.62h38.76v-72h72v-38.76h-72v-72h-38.76v72h-72v38.76h72v72Z" />
+          </svg>
+          29m²
+          <p class="li">Living</p>
+        </div>
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="20px"
+            viewBox="0 -960 960 960"
+            width="20px"
+            fill="#1f1f1f">
+            <path
+              d="M232-232v-368.92l-87.85 66.15-20.92-26.46L480-824l356.77 263.54-20.15 25.69L480-783 264-623.38V-264h130.92v32H232ZM696-96.62q-46.08 29.31-87.43 27.99-41.35-1.32-73.72-34.22-32.7-32.69-34.62-74.77-1.92-42.07 28.39-86.38-30.31-45.08-28.39-87.27 1.92-42.19 34.58-75 32.65-32.8 74.76-34.11 42.12-1.31 86.43 29 45.08-30.31 86.77-28.39 41.69 1.92 74.38 34.12 32.7 32.19 34.62 74.77 1.92 42.57-28.39 86.88 30.31 45.08 28.39 86.77-1.92 41.69-34.62 74.38-32.69 32.7-74.77 34.62-42.07 1.92-86.38-28.39Zm1-35.76 28.46 17.53q26.16 16.85 57.35 13.97 31.19-2.89 52.31-24.5Q856.23-147 859-178.49q2.77-31.49-13.08-58.05L827.62-264l17.53-28.46q16.85-26.56 14.47-58.05-2.39-31.49-23-51.11-21.62-21.61-53.31-25.88t-57.85 13.58L697-394.62l-28.46-18.53q-26.16-17.85-57.35-14.47-31.19 3.39-52.81 25Q536.77-381 533-349.81q-3.77 31.19 14.08 57.35l19.3 28.46-18.53 29.46q-17.85 26.16-14.97 57.35 2.89 31.19 24.5 52.81Q579-102.77 611.19-100q32.19 2.77 58.35-15.08l27.46-17.3Zm19.92-110.58q8.62-8.51 8.62-20.93t-8.5-21.03q-8.51-8.62-20.93-8.62t-21.03 8.5q-8.62 8.51-8.62 20.93t8.5 21.03q8.51 8.62 20.93 8.62t21.03-8.5ZM480-508.38ZM696-264Z" />
+          </svg>
+          2 Rooms
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- FOOTER -->
+      <div class="footer">
+        <div>
+          By •
+          <strong under-line=""><a href="" class="wa">Waleed Sabir</a></strong>
+        </div>
+        <div>2 days ago</div>
+      </div>
+
+      <button>View Details</button>
+    </div>
+
+    <script>
+      let index = 0;
+      const slider = document.getElementById("slider");
+      const dots = document.querySelectorAll(".dots span");
+
+      function slide() {
+        index++;
+
+        if (index >= 3) index = 0;
+
+        slider.style.transform = `translateX(-${index * 100}%)`;
+
+        dots.forEach(dot => dot.classList.remove("active"));
+        dots[index].classList.add("active");
+      }
+
+      // 4 seconds pause
+      setInterval(slide, 4000);
+    </script>
+  </body>
+</html>

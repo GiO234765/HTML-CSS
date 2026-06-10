@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samith Mun - Resume</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    color: white;
+    background: linear-gradient(-45deg, #0f172a, #1e293b, #0ea5e9, #22c55e);
+    background-size: 400% 400%;
+    animation: bg 12s ease infinite;
+    overflow-x: hidden;
+}
+
+@keyframes bg {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* canvas background */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* container */
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* header */
+.header {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.header h1 {
+    font-size: 42px;
+}
+
+.header p {
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+/* card */
+.card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+h2 {
+    margin-bottom: 10px;
+    border-left: 4px solid #22c55e;
+    padding-left: 10px;
+}
+
+p, li {
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* lists */
+ul {
+    margin-left: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="canvas"></canvas>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>SAMITH MUN</h1>
+        <p>Computer Science & Engineering Student | Web Developer</p>
+    </div>
+
+    <!-- OBJECTIVE -->
+    <div class="card">
+        <h2>🎯 Objective</h2>
+        <p>
+            I am a second year student majoring in Computer Science and Engineering.
+            I am looking for a part-time job as a frontend or backend developer.
+            <br>Email: munsamith553@gmail.com
+        </p>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="card">
+        <h2>💼 Experience</h2>
+
+        <p><b>Computer Teacher - CITO COMPUTER</b></p>
+        <p>10/12/2025 - 15/04/2026</p>
+        <ul>
+            <li>Prepared documents and managed student study tasks</li>
+        </ul>
+        <br>
+
+        <p><b>Internship Frontend - ETEC CENTER</b></p>
+        <ul>
+            <li>Built MPOS system and restaurant menu project</li>
+            <li>Worked in a team using GitHub</li>
+        </ul>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="card">
+        <h2>🎓 Education</h2>
+
+        <p><b>Royal University of Phnom Penh (2024 - 2028)</b></p>
+        <ul>
+            <li>Bachelor Degree in Computer Science</li>
+        </ul>
+
+        <br>
+
+        <p><b>Pre-University ISTAD (2026)</b></p>
+        <ul>
+            <li>Web Design & Frontend Development</li>
+            <li>HTML, CSS, JavaScript, Bootstrap, Tailwind</li>
+        </ul>
+
+        <br>
+
+        <p><b>ETEC Scholarship Program (2026)</b></p>
+        <ul>
+            <li>Backend Development training</li>
+            <li>Java Spring Boot, MySQL, API, MPOS projects</li>
+        </ul>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="card">
+        <h2>🧠 Skills</h2>
+        <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>Bootstrap, Tailwind CSS</li>
+            <li>C++, Python basics</li>
+            <li>MySQL, Java Spring Boot (basic)</li>
+            <li>Frontend & Backend fundamentals</li>
+        </ul>
+    </div>
+
+    <!-- LANGUAGES -->
+    <div class="card">
+        <h2>🌍 Languages</h2>
+        <ul>
+            <li>Khmer - Native</li>
+            <li>English - Intermediate</li>
+            <li>Chinese - Basic</li>
+        </ul>
+    </div>
+
+    <!-- REFERENCES -->
+    <div class="card">
+        <h2>📌 References</h2>
+        <p>Available upon request</p>
+    </div>
+
+</div>
+
+<script>
+// ===== Particle Background =====
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 1.2;
+        this.speedY = (Math.random() - 0.5) * 1.2;
+    }
+
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+    }
+
+    draw() {
+        ctx.fillStyle = "rgba(255,255,255,0.7)";
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+function init() {
+    for (let i = 0; i < 90; i++) {
+        particles.push(new Particle());
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let p of particles) {
+        p.update();
+        p.draw();
+    }
+
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+init();
+animate();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex</title>
+  </head>
+  <style>
+    .main-container {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      text-align: center;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+    .box1 {
+      background-color: red;
+      width: 60px;
+      transition: 1s ease-in-out;
+      animation: example 2s infinite alternate;
+      height: 60px;
+    }
+    @keyframes example {
+      from {
+        background-color: pink;
+        transform: translateX(0);
+        transform: circle(50px at 50% 50%);
+      }
+      to {
+        background-color: greenyellow;
+        border-radius: 50%;
+        transform: translateX(100px) rotate(360deg);
+      }
+    }
+    .box2 {
+      transition: 1s ease-in-out;
+      animation: example 2s infinite alternate;
+      height: 60px;
+      background-color: blue;
+      width: 60px;
+      height: 60px;
+    }
+    .box3 {
+      transition: 1s ease-in-out;
+      animation: example 2s infinite alternate;
+      height: 60px;
+      background-color: green;
+      width: 60px;
+      height: 60px;
+    }
+    .box4 {
+      transition: 1s ease-in-out;
+      animation: example 2s infinite alternate;
+      height: 60px;
+      background-color: yellow;
+      width: 60px;
+      height: 60px;
+    }
+    .box5 {
+      transition: 1s ease-in-out;
+      animation: example 2s infinite alternate;
+      height: 60px;
+      background-color: purple;
+      width: 60px;
+      height: 60px;
+    }
+  </style>
+  <body>
+    <div class="main-container">
+      <div class="box1">1</div>
+      <div class="box2">2</div>
+      <div class="box3">3</div>
+      <div class="box4">4</div>
+      <div class="box5">5</div>
+    </div>
+  </body>
+</html>

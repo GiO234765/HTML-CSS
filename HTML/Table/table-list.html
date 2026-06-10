@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+
+    <style>
+      table {
+        border: 2px solid black;
+        width: 60%;
+        border-collapse: collapse;
+        
+      }
+      th, td {
+        text-align: center n  ;
+        padding: 8px;
+        border: 1px solid black;
+      }
+      button {
+        cursor: pointer;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Enter Information</h2>
+    <form id="userForm">
+      <input type="text" id="inputName" placeholder="Enter name"><br>
+      <input type="number" id="inputAge" placeholder="Enter age"><br>
+      <input type="text" id="inputFav" placeholder="Favorite food"><br>
+
+      <button type="button" onclick="get()">Submit</button>
+    </form>
+
+    <table style="margin-top: 20px;">
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Favorite Food</th>
+      </tr>
+      <tr>
+        <td id="getName"></td>
+        <td id="getAge"></td>
+        <td id="getFav"></td>
+      </tr>
+    </table>
+
+    <script>
+      function get() {
+        document.getElementById("getName").innerText =
+          document.getElementById("inputName").value;
+
+        document.getElementById("getAge").innerText =
+          document.getElementById("inputAge").value;
+
+        document.getElementById("getFav").innerText =
+          document.getElementById("inputFav").value;
+      }
+    </script>
+  </body>
+</html>

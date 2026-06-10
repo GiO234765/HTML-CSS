@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MS Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    /* Lazy root */
+:root {
+    --bg: rgb(245,247,249);
+    --card: rgb(255,255,255);
+    --primary: rgb(0,160,150);
+    --primary-dark: rgb(0,130,120);
+    --text: rgb(30,30,30);
+    --muted: rgb(120,120,120);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.app {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    background: white;
+    border-right: 1px solid rgb(230,230,230);
+    padding: 24px 18px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nav-item {
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.nav-item.active {
+    background-color: rgb(225,245,243);
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+.nav-item:hover {
+    background-color: rgb(245,247,249);
+}
+
+/* Main */
+.main {
+    padding: 30px 40px;
+}
+
+.header {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgb(210,210,210);
+}
+
+.profile-name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Grid */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+}
+
+/* Cards */
+.card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.overview {
+    grid-column: span 4;
+}
+
+.invite {
+    grid-column: span 4;
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: white;
+}
+
+.stats {
+    grid-column: span 4;
+}
+
+.activity {
+    grid-column: span 8;
+}
+
+.quick {
+    grid-column: span 4;
+}
+
+/* Overview */
+.amount {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 6px 0 12px;
+}
+
+.progress {
+    height: 8px;
+    background: rgb(230,230,230);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.bar {
+    width: 65%;
+    height: 100%;
+    background: var(--primary);
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+/* Invite */
+.invite h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+}
+
+.invite p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Stats */
+.stat {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+/* Activity */
+.activity-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(230,230,230);
+    font-size: 14px;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+/* Quick actions */
+.quick button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.secondary-btn {
+    background: rgb(230,230,230);
+}
+/* Width of image */
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+/* Responsive */
+@media (max-width: 1000px) {
+    .app {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .overview,
+    .invite,
+    .stats,
+    .activity,
+    .quick {
+        grid-column: span 1;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="logo">MS</div>
+
+        <div class="nav">
+            <div class="nav-item active">My Account</div>
+            <div class="nav-item">Statistics</div>
+            <div class="nav-item">Cards</div>
+            <div class="nav-item">Transaction History</div>
+            <div class="nav-item">Security Settings</div>
+            <div class="nav-item">General Settings</div>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <div class="header">Dashboard</div>
+
+        <div class="profile">
+            <div class="avatar">
+                <img src="https://scontent.fpnh22-1.fna.fbcdn.net/v/t39.30808-6/618717040_1434157581762110_4585261256569126896_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeGswl3SzLSpcCeRYRmqRUMlUhXsz0suNVBSFezPSy41UHgF5MKj4CuxSY93YFXkRtEiSRamP1Mj7GC5QFzDDusK&_nc_ohc=7pHxEP2l51kQ7kNvwElEewB&_nc_oc=Adqlc4zeQ97ihLelpSK-A3uYH2ZuLEf6n_TcO4jxpXDf69ObyRFwewwUQ3Xxj0K7AoY&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fpnh22-1.fna&_nc_gid=WT7bJ9nmdMQ5zZ2Oy1kLAw&_nc_ss=7a3a8&oh=00_Af1_bC9QKvV8dat21dx2ApUQ3Jvu5C1rffN-Ifbwkc6mEA&oe=69D7896A" alt="" class="">
+            </div>
+            <div class="profile-name">MS</div>
+        </div>
+
+        <section class="dashboard">
+
+            <div class="card overview">
+                <div class="card-title">Overview</div>
+                <div class="amount">$12,521.10</div>
+                <div class="progress"><div class="bar"></div></div>
+                <div class="row"><span>Services</span><span>$8,221.00</span></div>
+                <div class="row"><span>Projects</span><span>$4,300.10</span></div>
+            </div>
+
+            <div class="card invite">
+                <h3>Invite Friends</h3>
+                <p>Invite people to collaborate, manage projects, and track activities with MS.</p>
+            </div>
+
+            <div class="card stats">
+                <div class="card-title">Statistics</div>
+                <div class="stat"><span>Active Projects</span><strong>12</strong></div>
+                <div class="stat"><span>Completed</span><strong>48</strong></div>
+                <div class="stat"><span>Pending</span><strong>5</strong></div>
+            </div>
+
+            <div class="card activity">
+                <div class="card-title">Recent Activity</div>
+                <div class="activity-item"><span>Project payment received</span><span>$1,200</span></div>
+                <div class="activity-item"><span>New user invited</span><span>Success</span></div>
+                <div class="activity-item"><span>Settings updated</span><span>Today</span></div>
+            </div>
+
+            <div class="card quick">
+                <div class="card-title">Quick Actions</div>
+                <button class="primary-btn">Create New Project</button>
+                <button class="secondary-btn">View Reports</button>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

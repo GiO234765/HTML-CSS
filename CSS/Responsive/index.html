@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Responsive</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-container {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+
+  /* Responsive grid */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+  background-color: #f4f4f4;
+}
+
+.cart {
+  height: 150px;
+  background-color: pink;
+}
+</style>
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="cart"></div>
+    <div class="cart"></div>
+    <div class="cart"></div>
+    <div class="cart"></div>
+    <div class="cart"></div>
+    <div class="cart"></div>  
+  </div>
+</body>
+</html>

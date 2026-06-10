@@ -1,0 +1,6 @@
+Kinds of Pseudo :
+- hover:
+- active:
+- focus:
+- focus-visible:
+- focus-within:
