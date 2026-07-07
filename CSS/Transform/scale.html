@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scale</title>
+  </head>
+  <!-- Style -->
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+    }
+    @keyframes key {
+      from {
+        background-color: rgb(255, 9, 9);
+        transform: translateX(0);
+        transform: circle(50px at 50% 50%);
+      }
+      to {
+        background-color: rgb(50, 166, 255);
+        border-radius: 50%;
+        transform: translateX(100px) rotate(360deg);
+      }
+    }
+    .main-container {
+      width: 300px;
+      animation-delay: 1s; /* Delay the start of the animation */
+      height: 300px;
+      border-radius: 10px;
+     
+      transition: 0.8s;
+      animation: key 2s infinite alternate ease-in-out;
+      background-color: antiquewhite;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    button{
+        border: none;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: aquamarine;
+    }
+  </style>
+  <body>
+    <div class="main-container">
+        <button class="">
+            Ni
+        </button>
+    </div>
+  </body>
+</html>

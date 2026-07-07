@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Table Responsive</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f3f4f6;
+        padding: 20px;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      /* ===== Grid Table ===== */
+      .grid-table {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* Desktop */
+        gap: 12px;
+        max-width: 900px;
+        margin: auto;
+      }
+
+      .cell {
+        background: white;
+        padding: 16px;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+      }
+
+      .header {
+        background: #1e40af;
+        color: white;
+        font-weight: bold;
+      }
+
+      /* ===== Tablet (iPad) ===== */
+      @media (max-width: 1024px) {
+        .grid-table {
+          grid-template-columns: repeat(3, 2fr);
+        }
+      }
+
+      /* ===== Phone ===== */
+      @media (max-width: 600px) {
+        .grid-table {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Responsive Grid Table</h2>
+
+    <div class="grid-table">
+      <!-- Headers -->
+      <div class="cell header">Name</div>
+      <div class="cell header">Role</div>
+      <div class="cell header">Country</div>
+      <div class="cell header">Status</div>
+
+      <!-- Row 1 -->
+      <div class="cell">Samith</div>
+      <div class="cell">Student</div>
+      <div class="cell">Cambodia</div>
+      <div class="cell">Active</div>
+
+      <!-- Row 2 -->
+      <div class="cell">Alice</div>
+      <div class="cell">Designer</div>
+      <div class="cell">USA</div>
+      <div class="cell">Active</div>
+
+      <!-- Row 3 -->
+      <div class="cell">Li Wei</div>
+      <div class="cell">Developer</div>
+      <div class="cell">China</div>
+      <div class="cell">Inactive</div>
+      <div class="cell">Li Wei</div>
+      <div class="cell">Developer</div>
+      <div class="cell">China</div>
+      <div class="cell">Inactive</div>
+    </div>
+  </body>
+</html>

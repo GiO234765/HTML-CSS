@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order use Array Object</title>
+  </head>
+  <body>
+    <!-- main content -->
+
+    <script>
+      //Array of Object with 2D elements
+      const orders = [
+        {
+          user_name: "Koko",
+          items: [
+            {
+              name: "Coca",
+              price: 2,
+            },
+          ],
+        },
+        {
+          user_name: "Kiko",
+          items: [
+            {
+              name: "Sting",
+              price: 3,
+            },
+          ],
+        },
+      ];
+      //Map function to get the items of the orders
+      orders.map(order => [
+        console.log(order.user_name),
+        console.log(order.items),
+      ]);
+    </script>
+  </body>
+</html>

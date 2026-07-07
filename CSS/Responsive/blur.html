@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blur Button</title>
+
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #111;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .blur-btn {
+      position: relative;
+      padding: 15px 30px;
+      transition: 0.7s;
+      font-size: 18px;
+      color: white; /* text color (NOT blue) */
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    /* Background layer */
+    .blur-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      transition: 0.3s ease;
+    }
+
+    /* Hover effect */
+    .blur-btn:hover::before {
+      background: rgb(181, 78, 207);
+      filter: blur(100vh);
+      transform: scale(1.7);
+      padding: 5px;
+      
+    }
+
+    /* Optional glow */
+    .blur-btn:hover {
+      box-shadow: 0 0 20px rgb(211, 86, 198);
+    }
+    button{
+        background-color: none;
+        border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="blur-btn">Click Me</button>
+
+</body>

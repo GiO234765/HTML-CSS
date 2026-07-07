@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Object</title>
+</head>
+<body>
+    <!-- main content -->
+    <!-- script -->
+     <script>
+         const products=[
+         {name:"Coca", price:2} ,
+         {name:"Sting",price:3},
+         {name:"Coconut",price:6}
+         ];
+         //Arrow function use for searching for the prorducts
+         const search_product = products.filter( product=>product.price>=3);
+         //Call the arrow 
+         console.log(search_product)
+
+
+         //forEach
+         products.forEach(product=>{
+             console.log(product.name,product.price)
+         })
+        </script>
+</body>
+</html>

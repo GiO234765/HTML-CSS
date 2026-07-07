@@ -1,0 +1,644 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+  :root {
+    --vsc-bg: #1e1e1e;
+    --vsc-sidebar: #252526;
+    --vsc-header: #3c3c3c;
+    --vsc-border: #454545;
+    --vsc-text: #cccccc;
+    --vsc-muted: #858585;
+    --vsc-accent: #007acc;
+    --vsc-green: #4ec9b0;
+    --vsc-yellow: #dcdcaa;
+    --vsc-pink: #c586c0;
+    --vsc-orange: #ce9178;
+    --vsc-selection: #264f78;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .vsc-wrapper {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--vsc-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--vsc-border);
+    max-width: 520px;
+    margin: 1rem auto;
+    user-select: none;
+  }
+
+  .vsc-titlebar {
+    background: #323233;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--vsc-border);
+  }
+
+  .dots { display: flex; gap: 6px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; }
+  .dot.y { background: #ffbd2e; }
+  .dot.g { background: #28ca41; }
+
+  .vsc-title {
+    color: var(--vsc-muted);
+    font-size: 12px;
+    margin-left: 8px;
+    flex: 1;
+    text-align: center;
+  }
+
+  .vsc-body { display: flex; height: 420px; }
+
+  .vsc-activity {
+    width: 48px;
+    background: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8px;
+    gap: 4px;
+    border-right: 1px solid var(--vsc-border);
+  }
+
+  .act-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--vsc-muted);
+    font-size: 18px;
+    transition: color 0.15s;
+    border-left: 2px solid transparent;
+  }
+  .act-icon.active { color: #fff; border-left-color: #fff; }
+  .act-icon:hover { color: #d4d4d4; }
+
+  .vsc-sidebar {
+    width: 200px;
+    background: var(--vsc-sidebar);
+    border-right: 1px solid var(--vsc-border);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-header {
+    padding: 10px 12px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--vsc-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+    border-bottom: 1px solid var(--vsc-border);
+  }
+
+  .pet-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 10px;
+    gap: 12px;
+    overflow-y: auto;
+  }
+
+  .pet-name {
+    font-size: 11px;
+    color: var(--vsc-green);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .pet-canvas {
+    width: 120px;
+    height: 100px;
+    position: relative;
+  }
+
+  .stats-section { width: 100%; }
+
+  .stat-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 9px;
+    color: var(--vsc-muted);
+    width: 32px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .stat-bar {
+    flex: 1;
+    height: 4px;
+    background: #3a3a3a;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .stat-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+
+  .stat-val {
+    font-size: 9px;
+    color: var(--vsc-muted);
+    width: 24px;
+    text-align: right;
+  }
+
+  .mood-badge {
+    background: #2d2d2d;
+    border: 1px solid var(--vsc-border);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 10px;
+    color: var(--vsc-yellow);
+    width: 100%;
+    text-align: center;
+  }
+
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+  }
+
+  .pet-btn {
+    background: #2d2d2d;
+    border: 1px solid var(--vsc-border);
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--vsc-text);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .pet-btn:hover { background: #37373d; border-color: var(--vsc-accent); }
+  .pet-btn:active { transform: scale(0.98); }
+
+  .pet-btn .btn-icon { font-size: 12px; }
+
+  .vsc-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--vsc-bg);
+  }
+
+  .editor-tabs {
+    display: flex;
+    background: #2d2d2d;
+    border-bottom: 1px solid var(--vsc-border);
+    overflow: hidden;
+  }
+
+  .tab {
+    padding: 7px 14px;
+    font-size: 12px;
+    color: var(--vsc-muted);
+    border-right: 1px solid var(--vsc-border);
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tab.active {
+    color: var(--vsc-text);
+    background: var(--vsc-bg);
+    border-top: 1px solid var(--vsc-accent);
+  }
+
+  .editor-area {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    display: none;
+  }
+
+  .editor-area.active { display: block; }
+
+  .code-line {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 3px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .ln { color: #4a4a4a; width: 16px; text-align: right; flex-shrink: 0; }
+  .kw { color: var(--vsc-pink); }
+  .fn { color: var(--vsc-yellow); }
+  .str { color: var(--vsc-orange); }
+  .comment { color: #6a9955; font-style: italic; }
+  .num { color: #b5cea8; }
+  .cls { color: var(--vsc-green); }
+
+  .terminal-area {
+    background: #1e1e1e;
+    border-top: 1px solid var(--vsc-border);
+    padding: 10px 14px;
+    height: 90px;
+    overflow-y: auto;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  .term-line { color: #d4d4d4; margin-bottom: 2px; line-height: 1.5; }
+  .term-line.info { color: var(--vsc-green); }
+  .term-line.warn { color: #ffbe5c; }
+
+  .statusbar {
+    background: var(--vsc-accent);
+    padding: 2px 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 10px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .status-item { display: flex; align-items: center; gap: 4px; opacity: 0.9; }
+
+  #petSvg { width: 120px; height: 100px; }
+
+  .bubble {
+    position: absolute;
+    top: -2px;
+    right: -8px;
+    background: #2d2d2d;
+    border: 1px solid var(--vsc-border);
+    border-radius: 8px 8px 8px 2px;
+    padding: 3px 6px;
+    font-size: 9px;
+    color: var(--vsc-text);
+    white-space: nowrap;
+    animation: fadeInBubble 0.3s ease;
+    display: none;
+  }
+
+  @keyframes fadeInBubble { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  @keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  .pet-container { animation: none; }
+  .pet-container.bouncing { animation: bounce 0.4s ease 3; }
+  .pet-container.shaking { animation: shake 0.3s ease 2; }
+</style>
+
+<h2 class="sr-only">VS Code pet extension simulator — care for your coding companion</h2>
+
+<div class="vsc-wrapper">
+  <div class="vsc-titlebar">
+    <div class="dots">
+      <div class="dot r"></div>
+      <div class="dot y"></div>
+      <div class="dot g"></div>
+    </div>
+    <span class="vsc-title">Visual Studio Code — pet_companion.ts</span>
+  </div>
+
+  <div class="vsc-body">
+    <div class="vsc-activity">
+      <div class="act-icon active" title="Explorer"><i class="ti ti-files"></i></div>
+      <div class="act-icon" title="Search"><i class="ti ti-search"></i></div>
+      <div class="act-icon" title="Source Control"><i class="ti ti-git-branch"></i></div>
+      <div class="act-icon" title="Extensions"><i class="ti ti-puzzle"></i></div>
+    </div>
+
+    <div class="vsc-sidebar">
+      <div class="sidebar-header">🐾 Pet Companion</div>
+      <div class="pet-panel">
+        <div class="pet-name" id="petName">NIBBLES.EXE</div>
+
+        <div class="pet-canvas" id="petCanvas">
+          <div class="pet-container" id="petContainer">
+            <svg id="petSvg" viewBox="0 0 120 100">
+              <!-- Cat body -->
+              <g id="petGroup">
+                <!-- tail -->
+                <path id="tail" d="M 30 72 Q 10 80 14 65 Q 18 52 26 60" fill="none" stroke="#4ec9b0" stroke-width="4" stroke-linecap="round"/>
+                <!-- body -->
+                <ellipse cx="60" cy="68" rx="28" ry="20" fill="#4ec9b0"/>
+                <!-- head -->
+                <circle cx="62" cy="42" r="20" fill="#4ec9b0"/>
+                <!-- ears -->
+                <polygon points="46,28 40,16 52,22" fill="#4ec9b0"/>
+                <polygon points="78,28 84,16 72,22" fill="#4ec9b0"/>
+                <polygon points="47,27 43,19 51,23" fill="#ce9178"/>
+                <polygon points="77,27 81,19 73,23" fill="#ce9178"/>
+                <!-- face -->
+                <circle id="eyeL" cx="55" cy="40" r="4" fill="#1e1e1e"/>
+                <circle id="eyeR" cx="69" cy="40" r="4" fill="#1e1e1e"/>
+                <circle cx="56.5" cy="39" r="1.5" fill="#ffffff"/>
+                <circle cx="70.5" cy="39" r="1.5" fill="#ffffff"/>
+                <!-- nose -->
+                <polygon points="62,46 59.5,48.5 64.5,48.5" fill="#ce9178"/>
+                <!-- mouth -->
+                <path id="mouth" d="M 59 49 Q 62 52 65 49" fill="none" stroke="#1e1e1e" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- whiskers -->
+                <line x1="40" y1="46" x2="56" y2="47" stroke="#858585" stroke-width="0.8" opacity="0.6"/>
+                <line x1="40" y1="49" x2="56" y2="49" stroke="#858585" stroke-width="0.8" opacity="0.6"/>
+                <line x1="68" y1="47" x2="84" y2="46" stroke="#858585" stroke-width="0.8" opacity="0.6"/>
+                <line x1="68" y1="49" x2="84" y2="49" stroke="#858585" stroke-width="0.8" opacity="0.6"/>
+                <!-- paws -->
+                <ellipse cx="40" cy="84" rx="9" ry="6" fill="#3ab8a0"/>
+                <ellipse cx="80" cy="84" rx="9" ry="6" fill="#3ab8a0"/>
+              </g>
+            </svg>
+          </div>
+          <div class="bubble" id="bubble">meow!</div>
+        </div>
+
+        <div class="mood-badge" id="moodBadge">😸 Happy coder</div>
+
+        <div class="stats-section">
+          <div class="stat-row">
+            <span class="stat-label">HP</span>
+            <div class="stat-bar"><div class="stat-fill" id="hpBar" style="width:85%;background:#4ec9b0;"></div></div>
+            <span class="stat-val" id="hpVal">85</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">HNG</span>
+            <div class="stat-bar"><div class="stat-fill" id="hngBar" style="width:60%;background:#dcdcaa;"></div></div>
+            <span class="stat-val" id="hngVal">60</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">FUN</span>
+            <div class="stat-bar"><div class="stat-fill" id="funBar" style="width:72%;background:#c586c0;"></div></div>
+            <span class="stat-val" id="funVal">72</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">REST</span>
+            <div class="stat-bar"><div class="stat-fill" id="restBar" style="width:50%;background:#ce9178;"></div></div>
+            <span class="stat-val" id="restVal">50</span>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="pet-btn" onclick="feedPet()"><span class="btn-icon">🍣</span> feed()</button>
+          <button class="pet-btn" onclick="playPet()"><span class="btn-icon">🎮</span> play()</button>
+          <button class="pet-btn" onclick="restPet()"><span class="btn-icon">🌙</span> sleep()</button>
+          <button class="pet-btn" onclick="codePet()"><span class="btn-icon">💻</span> code()</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="vsc-main">
+      <div class="editor-tabs">
+        <div class="tab active" onclick="switchTab(0, this)">
+          <i class="ti ti-brand-typescript" style="color:#3178c6;font-size:12px;"></i> pet_companion.ts
+        </div>
+        <div class="tab" onclick="switchTab(1, this)">
+          <i class="ti ti-file-code" style="font-size:12px;"></i> config.json
+        </div>
+      </div>
+
+      <div class="editor-area active" id="tab0">
+        <div class="code-line"><span class="ln">1</span><span class="comment">// 🐾 VS Code Pet Extension — pet_companion.ts</span></div>
+        <div class="code-line"><span class="ln">2</span><span></span></div>
+        <div class="code-line"><span class="ln">3</span><span><span class="kw">import</span> * <span class="kw">as</span> vscode <span class="kw">from</span> <span class="str">'vscode'</span>;</span></div>
+        <div class="code-line"><span class="ln">4</span><span></span></div>
+        <div class="code-line"><span class="ln">5</span><span><span class="kw">interface</span> <span class="cls">PetStats</span> {</span></div>
+        <div class="code-line"><span class="ln">6</span><span>&nbsp;&nbsp;hp: <span class="kw">number</span>; hunger: <span class="kw">number</span>;</span></div>
+        <div class="code-line"><span class="ln">7</span><span>&nbsp;&nbsp;fun: <span class="kw">number</span>; rest: <span class="kw">number</span>;</span></div>
+        <div class="code-line"><span class="ln">8</span><span>}</span></div>
+        <div class="code-line"><span class="ln">9</span><span></span></div>
+        <div class="code-line"><span class="ln">10</span><span><span class="kw">class</span> <span class="cls">PetCompanion</span> {</span></div>
+        <div class="code-line"><span class="ln">11</span><span>&nbsp;&nbsp;<span class="kw">private</span> stats: <span class="cls">PetStats</span>;</span></div>
+        <div class="code-line"><span class="ln">12</span><span>&nbsp;&nbsp;<span class="kw">private</span> panel: vscode.<span class="cls">WebviewPanel</span>;</span></div>
+        <div class="code-line"><span class="ln">13</span><span></span></div>
+        <div class="code-line"><span class="ln">14</span><span>&nbsp;&nbsp;<span class="fn">constructor</span>() {</span></div>
+        <div class="code-line"><span class="ln">15</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">this</span>.stats = {</span></div>
+        <div class="code-line"><span class="ln">16</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hp: <span class="num">100</span>, hunger: <span class="num">80</span>,</span></div>
+        <div class="code-line"><span class="ln">17</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fun: <span class="num">70</span>, rest: <span class="num">60</span></span></div>
+        <div class="code-line"><span class="ln">18</span><span>&nbsp;&nbsp;&nbsp;&nbsp;};</span></div>
+        <div class="code-line"><span class="ln">19</span><span>&nbsp;&nbsp;}</span></div>
+        <div class="code-line"><span class="ln">20</span><span></span></div>
+        <div class="code-line"><span class="ln">21</span><span>&nbsp;&nbsp;<span class="fn">feed</span>(): <span class="kw">void</span> {</span></span></div>
+        <div class="code-line"><span class="ln">22</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">this</span>.stats.hunger = <span class="cls">Math</span>.<span class="fn">min</span>(<span class="num">100</span>,</span></div>
+        <div class="code-line"><span class="ln">23</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">this</span>.stats.hunger + <span class="num">20</span>);</span></div>
+        <div class="code-line"><span class="ln">24</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">this</span>.<span class="fn">render</span>();</span></div>
+        <div class="code-line"><span class="ln">25</span><span>&nbsp;&nbsp;}</span></div>
+        <div class="code-line"><span class="ln">26</span><span>}</span></div>
+        <div class="code-line"><span class="ln">27</span><span></span></div>
+        <div class="code-line"><span class="ln">28</span><span><span class="kw">export function</span> <span class="fn">activate</span>(</span></div>
+        <div class="code-line"><span class="ln">29</span><span>&nbsp;&nbsp;ctx: vscode.<span class="cls">ExtensionContext</span></span></div>
+        <div class="code-line"><span class="ln">30</span><span>) {</span></div>
+        <div class="code-line"><span class="ln">31</span><span>&nbsp;&nbsp;<span class="kw">const</span> pet = <span class="kw">new</span> <span class="cls">PetCompanion</span>();</span></div>
+        <div class="code-line"><span class="ln">32</span><span>&nbsp;&nbsp;ctx.subscriptions.<span class="fn">push</span>(pet);</span></div>
+        <div class="code-line"><span class="ln">33</span><span>}</span></div>
+      </div>
+
+      <div class="editor-area" id="tab1">
+        <div class="code-line"><span class="ln">1</span><span style="color:#d4d4d4;">{</span></div>
+        <div class="code-line"><span class="ln">2</span><span>&nbsp;&nbsp;<span class="str">"name"</span>: <span class="str">"vscode-pet"</span>,</span></div>
+        <div class="code-line"><span class="ln">3</span><span>&nbsp;&nbsp;<span class="str">"displayName"</span>: <span class="str">"Pet Companion"</span>,</span></div>
+        <div class="code-line"><span class="ln">4</span><span>&nbsp;&nbsp;<span class="str">"version"</span>: <span class="str">"1.0.0"</span>,</span></div>
+        <div class="code-line"><span class="ln">5</span><span>&nbsp;&nbsp;<span class="str">"engines"</span>: {</span></div>
+        <div class="code-line"><span class="ln">6</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"vscode"</span>: <span class="str">"^1.85.0"</span></span></div>
+        <div class="code-line"><span class="ln">7</span><span>&nbsp;&nbsp;},</span></div>
+        <div class="code-line"><span class="ln">8</span><span>&nbsp;&nbsp;<span class="str">"activationEvents"</span>: [</span></div>
+        <div class="code-line"><span class="ln">9</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"onStartupFinished"</span></span></div>
+        <div class="code-line"><span class="ln">10</span><span>&nbsp;&nbsp;],</span></div>
+        <div class="code-line"><span class="ln">11</span><span>&nbsp;&nbsp;<span class="str">"contributes"</span>: {</span></div>
+        <div class="code-line"><span class="ln">12</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"viewsContainers"</span>: {</span></div>
+        <div class="code-line"><span class="ln">13</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"activitybar"</span>: [{</span></div>
+        <div class="code-line"><span class="ln">14</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"id"</span>: <span class="str">"petView"</span>,</span></div>
+        <div class="code-line"><span class="ln">15</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"title"</span>: <span class="str">"Pet"</span>,</span></div>
+        <div class="code-line"><span class="ln">16</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"icon"</span>: <span class="str">"🐾"</span></span></div>
+        <div class="code-line"><span class="ln">17</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]</span></div>
+        <div class="code-line"><span class="ln">18</span><span>&nbsp;&nbsp;&nbsp;&nbsp;}</span></div>
+        <div class="code-line"><span class="ln">19</span><span>&nbsp;&nbsp;}</span></div>
+        <div class="code-line"><span class="ln">20</span><span>}</span></div>
+      </div>
+
+      <div class="terminal-area" id="terminal">
+        <div class="term-line info">🐾 Pet Companion extension activated!</div>
+        <div class="term-line">NIBBLES.EXE v1.0.0 initialized successfully.</div>
+        <div class="term-line" style="color:var(--vsc-muted);">Watching workspace for code activity...</div>
+        <div class="term-line" id="lastLog" style="color:var(--vsc-muted);">Tip: Feed your pet to keep them happy! 🍣</div>
+      </div>
+
+      <div class="statusbar">
+        <div class="status-item"><i class="ti ti-git-branch" style="font-size:11px;"></i> main</div>
+        <div class="status-item"><i class="ti ti-circle-check" style="font-size:11px;"></i> TypeScript 5.3</div>
+        <div class="status-item" id="statusPet">🐾 Nibbles: 😸 Happy</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const state = {
+    hp: 85, hunger: 60, fun: 72, rest: 50,
+    mood: '😸 Happy coder', bubbleTimeout: null
+  };
+
+  const moods = [
+    [80, '😸 Happy coder'],
+    [60, '😊 Doing okay'],
+    [40, '😐 Needs attention'],
+    [20, '😿 Feeling sad'],
+    [0,  '💤 Very tired']
+  ];
+
+  function updateStats() {
+    const s = state;
+    const avg = (s.hp + s.hunger + s.fun + s.rest) / 4;
+    const mood = moods.find(m => avg >= m[0]) || moods[moods.length-1];
+    s.mood = mood[1];
+
+    document.getElementById('hpBar').style.width = s.hp + '%';
+    document.getElementById('hngBar').style.width = s.hunger + '%';
+    document.getElementById('funBar').style.width = s.fun + '%';
+    document.getElementById('restBar').style.width = s.rest + '%';
+    document.getElementById('hpVal').textContent = s.hp;
+    document.getElementById('hngVal').textContent = s.hunger;
+    document.getElementById('funVal').textContent = s.fun;
+    document.getElementById('restVal').textContent = s.rest;
+    document.getElementById('moodBadge').textContent = s.mood;
+    document.getElementById('statusPet').textContent = '🐾 Nibbles: ' + s.mood.split(' ')[0];
+
+    const hpFill = document.getElementById('hpBar');
+    if (s.hp > 60) hpFill.style.background = '#4ec9b0';
+    else if (s.hp > 30) hpFill.style.background = '#dcdcaa';
+    else hpFill.style.background = '#f44747';
+  }
+
+  function clamp(v) { return Math.min(100, Math.max(0, v)); }
+
+  function showBubble(msg) {
+    const b = document.getElementById('bubble');
+    b.textContent = msg;
+    b.style.display = 'block';
+    if (state.bubbleTimeout) clearTimeout(state.bubbleTimeout);
+    state.bubbleTimeout = setTimeout(() => { b.style.display = 'none'; }, 2500);
+  }
+
+  function animatePet(type) {
+    const c = document.getElementById('petContainer');
+    c.classList.remove('bouncing', 'shaking');
+    void c.offsetWidth;
+    c.classList.add(type);
+    setTimeout(() => c.classList.remove(type), 1200);
+  }
+
+  function logTerminal(msg, cls='') {
+    const log = document.getElementById('lastLog');
+    const parent = log.parentElement;
+    const line = document.createElement('div');
+    line.className = 'term-line' + (cls ? ' ' + cls : '');
+    line.textContent = msg;
+    parent.appendChild(line);
+    parent.scrollTop = parent.scrollHeight;
+  }
+
+  function feedPet() {
+    if (state.hunger >= 100) { showBubble('Too full! 🙅'); logTerminal('Nibbles is already full!', 'warn'); return; }
+    state.hunger = clamp(state.hunger + 20);
+    state.hp = clamp(state.hp + 5);
+    animatePet('bouncing');
+    showBubble('Yummy! 🍣');
+    logTerminal('> pet.feed() — Hunger +20, HP +5', 'info');
+    updateStats();
+  }
+
+  function playPet() {
+    if (state.rest < 15) { showBubble('Too tired! 😴'); logTerminal('Nibbles needs rest first!', 'warn'); return; }
+    state.fun = clamp(state.fun + 25);
+    state.rest = clamp(state.rest - 15);
+    state.hunger = clamp(state.hunger - 10);
+    animatePet('bouncing');
+    showBubble('Wheee! 🎮');
+    logTerminal('> pet.play() — Fun +25, Rest -15', 'info');
+    updateStats();
+  }
+
+  function restPet() {
+    if (state.rest >= 100) { showBubble('Not sleepy! 😺'); logTerminal('Nibbles is already well rested!', 'warn'); return; }
+    state.rest = clamp(state.rest + 30);
+    state.hp = clamp(state.hp + 8);
+    showBubble('Zzz... 💤');
+    logTerminal('> pet.sleep() — Rest +30, HP +8', 'info');
+    updateStats();
+  }
+
+  function codePet() {
+    state.fun = clamp(state.fun + 10);
+    state.hp = clamp(state.hp + 3);
+    state.rest = clamp(state.rest - 8);
+    state.hunger = clamp(state.hunger - 5);
+    animatePet('bouncing');
+    const msgs = ['print("meow")! 💻', 'npm run purr 🐾', 'git commit -m "meow"', 'git push paw/main'];
+    showBubble(msgs[Math.floor(Math.random() * msgs.length)]);
+    logTerminal('> pet.code() — Fun +10, HP +3', 'info');
+    updateStats();
+  }
+
+  function switchTab(idx, el) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.editor-area').forEach(a => a.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('tab' + idx).classList.add('active');
+  }
+
+  // Tail wag animation
+  let tailDir = 1, tailAngle = 0;
+  function animateTail() {
+    tailAngle += tailDir * 2;
+    if (tailAngle > 12 || tailAngle < -12) tailDir *= -1;
+    const tail = document.getElementById('tail');
+    if (tail) {
+      const rad = tailAngle * Math.PI / 180;
+      tail.setAttribute('transform', `rotate(${tailAngle}, 30, 72)`);
+    }
+    requestAnimationFrame(animateTail);
+  }
+  animateTail();
+
+  // Eye blink
+  function blink() {
+    const eL = document.getElementById('eyeL');
+    const eR = document.getElementById('eyeR');
+    if (eL && eR) {
+      eL.setAttribute('ry', '1'); eR.setAttribute('ry', '1');
+      setTimeout(() => { eL.removeAttribute('ry'); eR.removeAttribute('ry'); }, 120);
+    }
+    setTimeout(blink, 2500 + Math.random() * 3000);
+  }
+  blink();
+
+  // Passive stat decay
+  setInterval(() => {
+    state.hunger = clamp(state.hunger - 2);
+    state.fun = clamp(state.fun - 1);
+    state.rest = clamp(state.rest - 1);
+    state.hp = clamp(state.hp - (state.hunger < 20 ? 2 : 0));
+    updateStats();
+  }, 8000);
+</script>

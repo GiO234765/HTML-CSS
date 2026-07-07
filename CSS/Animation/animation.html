@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animation</title>
+  </head>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      transition:
+        2s ease-in-out,
+        border-radius 0.5s ease;
+      animation: moveAndColor 2s infinite alternate ease-in-out;
+    }
+
+    .box1 {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      animation: move 2s infinite alternate ease-in-out;
+      animation-delay: 1s; /* Delay the start of the animation */
+    }
+    @keyframes move {
+      from {
+        background-color: red;
+      }
+      to {
+        background-color: pink;
+      }
+    }
+
+    @keyframes moveAndColor {
+      from {
+        background-color: red;
+        transform: translateX(0);
+        transform: circle(50px at 50% 50%);
+      }
+      to {
+        background-color: blue;
+        border-radius: 50%;
+        transform: translateX(100px) rotate(360deg);
+      }
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .containe {
+      display: flex;
+      gap: 20px;
+      width: 500px;
+      height: 500px;
+      background-color: transparent;
+      border: 1px solid black;
+    }
+  </style>
+  <body>
+    <!-- Parent Container -->
+    <div class="containe">
+      <!-- Animated Box -->
+      <div class="box"></div>
+      <div class="box1"></div>
+    </div>
+  </body>
+</html>

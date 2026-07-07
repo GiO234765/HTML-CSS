@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet" />
+
+    <style>
+      .main-container {
+        min-height: 100vh;
+      }
+
+      .cart {
+        width: 300px;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .discount {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgb(23, 97, 35);
+        color: white;
+        padding: 3px 8px;
+        font-size: 12px;
+        border-radius: 5px;
+        width: 90px;
+        text-align: center;
+        border-radius: 30px;
+      }
+
+      .top {
+        position: relative;
+      }
+      .image {
+        height: 250px;
+      }
+      .icons {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .icons2 {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+        position: absolute;
+
+        top: 50px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .icons3 {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+        position: absolute;
+        top:90px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container main-container d-flex align-items-center">
+        <div class="">
+
+        </div>
+      <div class="row g-4 justify-content-center w-100">
+        <!-- Card -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="cart">
+            <div class="top position-relative">
+              <img
+                src="https://i.pinimg.com/736x/94/2a/76/942a76a80ba67cc09f6f6da527f92bd3.jpg"
+                class="w-100 image" />
+              <div class="discount">%50</div>
+              <!-- Icons -->
+              <div class="icons">
+                ☀️
+              </div>
+              <div class="icons2">
+                🌻
+              </div>
+              <div class="icons3">
+                🛒
+              </div>
+            </div>
+
+            <div class="p-3">
+              <div class="d-flex justify-content-between">
+                <p class="mb-1">Flowers</p>
+                <!-- heart icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="20px"
+                  viewBox="0 -960 960 960"
+                  width="20px"
+                  fill="#D16D6A">
+                  <path
+                    d="m480-144-50-45q-100-89-165-152.5t-102.5-113Q125-504 110.5-545T96-629q0-89 61-150t150-61q49 0 95 21t78 59q32-38 78-59t95-21q89 0 150 61t61 150q0 43-14 83t-51.5 89q-37.5 49-103 113.5T528-187l-48 43Zm0-97q93-83 153-141.5t95.5-102Q764-528 778-562t14-67q0-59-40-99t-99-40q-35 0-65.5 14.5T535-713l-35 41h-40l-35-41q-22-26-53.5-40.5T307-768q-59 0-99 40t-40 99q0 33 13 65.5t47.5 75.5q34.5 43 95 102T480-241Zm0-264Z" />
+                </svg>
+              </div>
+
+              <p class="fw-bold mb-1">Sun Flower</p>
+
+              <div class="d-flex gap-2">
+                <span class="fw-bold​​ text-primary">$35.00</span>
+                <span class="text-muted text-decoration-line-through"
+                  >$70.00</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="cart">
+            <div class="top position-relative">
+              <img
+                src="https://i.pinimg.com/736x/94/2a/76/942a76a80ba67cc09f6f6da527f92bd3.jpg"
+                class="w-100 image" />
+              <div class="discount">%50</div>
+              <!-- Icons -->
+              <div class="icons">
+                ☀️
+              </div>
+              <div class="icons2">
+                🌻
+              </div>
+              <div class="icons3">
+                🛒
+              </div>
+            </div>
+
+            <div class="p-3">
+              <div class="d-flex justify-content-between">
+                <p class="mb-1">Flowers</p>
+                <!-- heart icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="20px"
+                  viewBox="0 -960 960 960"
+                  width="20px"
+                  fill="#D16D6A">
+                  <path
+                    d="m480-144-50-45q-100-89-165-152.5t-102.5-113Q125-504 110.5-545T96-629q0-89 61-150t150-61q49 0 95 21t78 59q32-38 78-59t95-21q89 0 150 61t61 150q0 43-14 83t-51.5 89q-37.5 49-103 113.5T528-187l-48 43Zm0-97q93-83 153-141.5t95.5-102Q764-528 778-562t14-67q0-59-40-99t-99-40q-35 0-65.5 14.5T535-713l-35 41h-40l-35-41q-22-26-53.5-40.5T307-768q-59 0-99 40t-40 99q0 33 13 65.5t47.5 75.5q34.5 43 95 102T480-241Zm0-264Z" />
+                </svg>
+              </div>
+
+              <p class="fw-bold mb-1">Sun Flower</p>
+
+              <div class="d-flex gap-2">
+                <span class="fw-bold​​ text-primary">$35.00</span>
+                <span class="text-muted text-decoration-line-through"
+                  >$70.00</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="cart">
+            <div class="top position-relative">
+              <img
+                src="https://i.pinimg.com/736x/94/2a/76/942a76a80ba67cc09f6f6da527f92bd3.jpg"
+                class="w-100 image" />
+              <div class="discount">%50</div>
+              <!-- Icons -->
+              <div class="icons">
+                ☀️
+              </div>
+              <div class="icons2">
+                🌻
+              </div>
+              <div class="icons3">
+                🛒
+              </div>
+            </div>
+
+            <div class="p-3">
+              <div class="d-flex justify-content-between">
+                <p class="mb-1">Flowers</p>
+                <!-- heart icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="20px"
+                  viewBox="0 -960 960 960"
+                  width="20px"
+                  fill="#D16D6A">
+                  <path
+                    d="m480-144-50-45q-100-89-165-152.5t-102.5-113Q125-504 110.5-545T96-629q0-89 61-150t150-61q49 0 95 21t78 59q32-38 78-59t95-21q89 0 150 61t61 150q0 43-14 83t-51.5 89q-37.5 49-103 113.5T528-187l-48 43Zm0-97q93-83 153-141.5t95.5-102Q764-528 778-562t14-67q0-59-40-99t-99-40q-35 0-65.5 14.5T535-713l-35 41h-40l-35-41q-22-26-53.5-40.5T307-768q-59 0-99 40t-40 99q0 33 13 65.5t47.5 75.5q34.5 43 95 102T480-241Zm0-264Z" />
+                </svg>
+              </div>
+
+              <p class="fw-bold mb-1">Sun Flower</p>
+
+              <div class="d-flex gap-2">
+                <span class="fw-bold​​ text-primary">$35.00</span>
+                <span class="text-muted text-decoration-line-through"
+                  >$70.00</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="cart">
+            <div class="top position-relative">
+              <img
+                src="https://i.pinimg.com/736x/94/2a/76/942a76a80ba67cc09f6f6da527f92bd3.jpg"
+                class="w-100 image" />
+              <div class="discount">%50</div>
+              <!-- Icons -->
+              <div class="icons">
+                ☀️
+              </div>
+              <div class="icons2">
+                🌻
+              </div>
+              <div class="icons3">
+                🛒
+              </div>
+            </div>
+
+            <div class="p-3">
+              <div class="d-flex justify-content-between">
+                <p class="mb-1">Flowers</p>
+                <!-- heart icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="20px"
+                  viewBox="0 -960 960 960"
+                  width="20px"
+                  fill="#D16D6A">
+                  <path
+                    d="m480-144-50-45q-100-89-165-152.5t-102.5-113Q125-504 110.5-545T96-629q0-89 61-150t150-61q49 0 95 21t78 59q32-38 78-59t95-21q89 0 150 61t61 150q0 43-14 83t-51.5 89q-37.5 49-103 113.5T528-187l-48 43Zm0-97q93-83 153-141.5t95.5-102Q764-528 778-562t14-67q0-59-40-99t-99-40q-35 0-65.5 14.5T535-713l-35 41h-40l-35-41q-22-26-53.5-40.5T307-768q-59 0-99 40t-40 99q0 33 13 65.5t47.5 75.5q34.5 43 95 102T480-241Zm0-264Z" />
+                </svg>
+              </div>
+
+              <p class="fw-bold mb-1">Sun Flower</p>
+
+              <div class="d-flex gap-2">
+                <span class="fw-bold​​ text-primary">$35.00</span>
+                <span class="text-muted text-decoration-line-through"
+                  >$70.00</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="cart">
+            <div class="top position-relative">
+              <img
+                src="https://i.pinimg.com/736x/94/2a/76/942a76a80ba67cc09f6f6da527f92bd3.jpg"
+                class="w-100 image" />
+              <div class="discount">%50</div>
+              <!-- Icons -->
+              <div class="icons">
+                ☀️
+              </div>
+              <div class="icons2">
+                🌻
+              </div>
+              <div class="icons3">
+                🛒
+              </div>
+            </div>
+
+            <div class="p-3">
+              <div class="d-flex justify-content-between">
+                <p class="mb-1">Flowers</p>
+                <!-- heart icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="20px"
+                  viewBox="0 -960 960 960"
+                  width="20px"
+                  fill="#D16D6A">
+                  <path
+                    d="m480-144-50-45q-100-89-165-152.5t-102.5-113Q125-504 110.5-545T96-629q0-89 61-150t150-61q49 0 95 21t78 59q32-38 78-59t95-21q89 0 150 61t61 150q0 43-14 83t-51.5 89q-37.5 49-103 113.5T528-187l-48 43Zm0-97q93-83 153-141.5t95.5-102Q764-528 778-562t14-67q0-59-40-99t-99-40q-35 0-65.5 14.5T535-713l-35 41h-40l-35-41q-22-26-53.5-40.5T307-768q-59 0-99 40t-40 99q0 33 13 65.5t47.5 75.5q34.5 43 95 102T480-241Zm0-264Z" />
+                </svg>
+              </div>
+
+              <p class="fw-bold mb-1">Sun Flower</p>
+
+              <div class="d-flex gap-2">
+                <span class="fw-bold​​ text-primary">$35.00</span>
+                <span class="text-muted text-decoration-line-through"
+                  >$70.00</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="cart">
+            <div class="top position-relative">
+              <img
+                src="https://i.pinimg.com/736x/94/2a/76/942a76a80ba67cc09f6f6da527f92bd3.jpg"
+                class="w-100 image" />
+              <div class="discount">%50</div>
+              <!-- Icons -->
+              <div class="icons">
+                ☀️
+              </div>
+              <div class="icons2">
+                🌻
+              </div>
+              <div class="icons3">
+                🛒
+              </div>
+            </div>
+
+            <div class="p-3">
+              <div class="d-flex justify-content-between">
+                <p class="mb-1">Flowers</p>
+                <!-- heart icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="20px"
+                  viewBox="0 -960 960 960"
+                  width="20px"
+                  fill="#D16D6A">
+                  <path
+                    d="m480-144-50-45q-100-89-165-152.5t-102.5-113Q125-504 110.5-545T96-629q0-89 61-150t150-61q49 0 95 21t78 59q32-38 78-59t95-21q89 0 150 61t61 150q0 43-14 83t-51.5 89q-37.5 49-103 113.5T528-187l-48 43Zm0-97q93-83 153-141.5t95.5-102Q764-528 778-562t14-67q0-59-40-99t-99-40q-35 0-65.5 14.5T535-713l-35 41h-40l-35-41q-22-26-53.5-40.5T307-768q-59 0-99 40t-40 99q0 33 13 65.5t47.5 75.5q34.5 43 95 102T480-241Zm0-264Z" />
+                </svg>
+              </div>
+
+              <p class="fw-bold mb-1">Sun Flower</p>
+
+              <div class="d-flex gap-2">
+                <span class="fw-bold​​ text-primary">$35.00</span>
+                <span class="text-muted text-decoration-line-through"
+                  >$70.00</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="cart">
+            <div class="top position-relative">
+              <img
+                src="https://i.pinimg.com/736x/94/2a/76/942a76a80ba67cc09f6f6da527f92bd3.jpg"
+                class="w-100 image" />
+              <div class="discount">%50</div>
+              <!-- Icons -->
+              <div class="icons">
+                ☀️
+              </div>
+              <div class="icons2">
+                🌻
+              </div>
+              <div class="icons3">
+                🛒
+              </div>
+            </div>
+
+            <div class="p-3">
+              <div class="d-flex justify-content-between">
+                <p class="mb-1">Flowers</p>
+                <!-- heart icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="20px"
+                  viewBox="0 -960 960 960"
+                  width="20px"
+                  fill="#D16D6A">
+                  <path
+                    d="m480-144-50-45q-100-89-165-152.5t-102.5-113Q125-504 110.5-545T96-629q0-89 61-150t150-61q49 0 95 21t78 59q32-38 78-59t95-21q89 0 150 61t61 150q0 43-14 83t-51.5 89q-37.5 49-103 113.5T528-187l-48 43Zm0-97q93-83 153-141.5t95.5-102Q764-528 778-562t14-67q0-59-40-99t-99-40q-35 0-65.5 14.5T535-713l-35 41h-40l-35-41q-22-26-53.5-40.5T307-768q-59 0-99 40t-40 99q0 33 13 65.5t47.5 75.5q34.5 43 95 102T480-241Zm0-264Z" />
+                </svg>
+              </div>
+
+              <p class="fw-bold mb-1">Sun Flower</p>
+
+              <div class="d-flex gap-2">
+                <span class="fw-bold​​ text-primary">$35.00</span>
+                <span class="text-muted text-decoration-line-through"
+                  >$70.00</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="cart">
+            <div class="top position-relative">
+              <img
+                src="https://i.pinimg.com/736x/94/2a/76/942a76a80ba67cc09f6f6da527f92bd3.jpg"
+                class="w-100 image" />
+              <div class="discount">%50</div>
+              <!-- Icons -->
+              <div class="icons">
+                ☀️
+              </div>
+              <div class="icons2">
+                🌻
+              </div>
+              <div class="icons3">
+                🛒
+              </div>
+            </div>
+
+            <div class="p-3">
+              <div class="d-flex justify-content-between">
+                <p class="mb-1">Flowers</p>
+                <!-- heart icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="20px"
+                  viewBox="0 -960 960 960"
+                  width="20px"
+                  fill="#D16D6A">
+                  <path
+                    d="m480-144-50-45q-100-89-165-152.5t-102.5-113Q125-504 110.5-545T96-629q0-89 61-150t150-61q49 0 95 21t78 59q32-38 78-59t95-21q89 0 150 61t61 150q0 43-14 83t-51.5 89q-37.5 49-103 113.5T528-187l-48 43Zm0-97q93-83 153-141.5t95.5-102Q764-528 778-562t14-67q0-59-40-99t-99-40q-35 0-65.5 14.5T535-713l-35 41h-40l-35-41q-22-26-53.5-40.5T307-768q-59 0-99 40t-40 99q0 33 13 65.5t47.5 75.5q34.5 43 95 102T480-241Zm0-264Z" />
+                </svg>
+              </div>
+
+              <p class="fw-bold mb-1">Sun Flower</p>
+
+              <div class="d-flex gap-2">
+                <span class="fw-bold​​ text-primary">$35.00</span>
+                <span class="text-muted text-decoration-line-through"
+                  >$70.00</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Repeat cards... -->
+      </div>
+    </div>
+    <div class="card ms-5 shadow-lg w-25 h-50 rounded-5">
+      <img
+        class="card-img-top rounded-5"
+        src=" https://i.pinimg.com/736x/07/01/d5/0701d55514550cd3fcd9570f08854eb0.jpg"
+        alt="" />
+
+      <div class="card-body">
+        <div class="">
+          <h4 class="card-title">Sun Flowers</h4>
+          <!-- icons -->
+        </div>
+        <div class=" d-flex gap-2">
+          <p class="card-text text-primary">$40.00</p>
+          <p class=""><tr>$70.00</tr></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

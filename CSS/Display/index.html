@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display</title>
+  </head>
+  <style>
+    .block {
+      /*Change width to full*/
+      display: block;
+      background-color: skyblue;
+    }
+    .inline {
+      width: 300px;
+      /*We can't set width and height*/
+      display: inline;
+      background-color: aquamarine;
+    }
+    .inline-block {
+      display: inline-block;
+      width: 300px;
+      background-color: pink;
+    }
+    .main-container {
+      display: flex;
+    }
+    .none-flex{
+        display: ;
+        background-color: chartreuse;
+    }
+  </style>
+  <body>
+    <div class="main-container">
+        <h1 class="">Flex</h1>
+            
+      <span class="block">What's up??</span>
+      <br />
+      <h1 class="inline">Inline</h1>
+      <br />
+      <h1 class="inline-block">Inline-block</h1>
+    </div>
+    <br> <br>
+    <div class="none-flex">
+        <h1 class="">None Flex</h1>
+      <span class="block">What's up??</span>
+      <br />
+      <h1 class="inline">Inline</h1>
+      <br />
+      <h1 class="inline-block">Inline-block</h1>
+    </div>
+  </body>
+</html>
+ 
