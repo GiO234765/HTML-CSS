@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INTERNET CHAOS SIMULATOR</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <!-- style -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      background: linear-gradient(45deg, #0f0f0f, #1a0033);
+      color: #0ff;
+      overflow: hidden;
+      transition: background 1s;
+      height: 100vh;
+    }
+
+    body.level-1 {
+      background: linear-gradient(45deg, #0f0f0f, #330033);
+    }
+    body.level-2 {
+      background: linear-gradient(45deg, #330000, #331a00);
+    }
+    body.level-3 {
+      background: linear-gradient(45deg, #4d0000, #00334d);
+    }
+    body.level-4 {
+      background: linear-gradient(45deg, #ff00ff, #00ffff);
+    }
+    body.level-5 {
+      background: linear-gradient(45deg, #ffff00, #ff00ff);
+    }
+
+    /* CHAOS BUTTON */
+    .chaos-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 25px 60px;
+      font-size: 2.8rem;
+      font-weight: bold;
+      color: white;
+      background: #ff00ff;
+      border: 8px solid #00ffff;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 0 40px #ff00ff;
+      text-shadow: 4px 4px 0 #000;
+      z-index: 100;
+      transition: all 0.2s;
+    }
+
+    .chaos-btn:hover {
+      transform: translate(-50%, -50%) scale(1.2) rotate(8deg);
+      background: #ffff00;
+      color: #000;
+      border-color: #ff00ff;
+    }
+
+    /* ANIMATIONS */
+    @keyframes buttonJitter {
+      0%,
+      100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      25% {
+        transform: translate(-45%, -55%) rotate(8deg);
+      }
+      50% {
+        transform: translate(-55%, -45%) rotate(-8deg);
+      }
+      75% {
+        transform: translate(-48%, -52%) rotate(5deg);
+      }
+    }
+
+    @keyframes screenShake {
+      0% {
+        transform: translate(1px, 1px) rotate(0deg);
+      }
+      10% {
+        transform: translate(-2px, -3px) rotate(-2deg);
+      }
+      20% {
+        transform: translate(-4px, 0) rotate(2deg);
+      }
+      30% {
+        transform: translate(4px, 3px) rotate(0deg);
+      }
+      40% {
+        transform: translate(2px, -2px) rotate(2deg);
+      }
+      50% {
+        transform: translate(-2px, 3px) rotate(-2deg);
+      }
+      100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+      }
+    }
+
+    @keyframes memeRain {
+      0% {
+        transform: translateY(-200px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(120vh) rotate(1440deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px);
+        opacity: 0;
+      }
+    }
+
+    .meme {
+      position: fixed;
+      width: 130px;
+      pointer-events: none;
+      z-index: 50;
+      animation: memeRain 4s linear forwards;
+    }
+
+    .insult {
+      position: fixed;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffff00;
+      text-shadow: 3px 3px 0 #000;
+      pointer-events: none;
+      animation: floatUp 2.8s forwards;
+      z-index: 60;
+    }
+
+    .glitch {
+      animation: glitch 0.3s infinite;
+    }
+
+    @keyframes glitch {
+      0% {
+        transform: translate(0);
+      }
+      20% {
+        transform: translate(-5px, 5px);
+      }
+      40% {
+        transform: translate(-5px, -5px);
+      }
+      60% {
+        transform: translate(5px, 5px);
+      }
+      80% {
+        transform: translate(5px, -5px);
+      }
+      100% {
+        transform: translate(0);
+      }
+    }
+  </style>
+  <body>
+    <button class="chaos-btn" id="chaosBtn">CAUSE CHAOS</button>
+
+    <div
+      id="chaosLevel"
+      style="
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        font-size: 1.5rem;
+        z-index: 1000;
+      ">
+      CHAOS LEVEL: <span id="level">0</span>/5
+    </div>
+
+    <script>
+      const btn = document.getElementById("chaosBtn");
+      const levelDisplay = document.getElementById("level");
+      let chaosLevel = 0;
+      let clickCount = 0;
+
+      const insults = [
+        "BRO WHY",
+        "STOP IT",
+        "THIS IS YOUR FAULT",
+        "MOM GET THE CAMERA",
+        "CERTIFIED MENACE",
+        "YOU'RE NOT OK",
+        "SKILL ISSUE",
+        "RATIO + L + BOZO",
+      ];
+
+      const memes = [
+        "https://i.pinimg.com/originals/0d/76/23/0d7623526d39e7710d8c965a1715f8b4.gif", // dancing cat
+        "https://i.pinimg.com/736x/a6/3a/2b/a63a2b0f82a81247f296c86a017eea06.jpg", // trollface
+        "https://i.pinimg.com/originals/cc/a3/12/cca312d92f095586b20d7205fe97044f.gif", // rickroll mini
+        "https://i.pinimg.com/736x/70/08/07/7008073e6a0e82b1c43fa163cfe03fd3.jpg", // doge
+      ];
+
+      btn.addEventListener("click", () => {
+        clickCount++;
+        chaosLevel = Math.min(Math.floor(clickCount / 8), 5);
+
+        levelDisplay.textContent = chaosLevel;
+        document.body.className = `level-${chaosLevel}`;
+
+        // Button gets chaotic
+        if (chaosLevel >= 3) {
+          btn.style.animation = "buttonJitter 0.4s infinite";
+        }
+
+        // Spawn memes
+        for (let i = 0; i < chaosLevel + 1; i++) {
+          spawnMeme();
+        }
+
+        // Spawn insults
+        if (chaosLevel >= 2) {
+          spawnInsult();
+        }
+
+        // Screen shake on high chaos
+        if (chaosLevel >= 4) {
+          document.body.style.animation = "screenShake 0.3s infinite";
+        }
+      });
+
+      function spawnMeme() {
+        const meme = document.createElement("img");
+        meme.src = memes[Math.floor(Math.random() * memes.length)];
+        meme.className = "meme";
+
+        meme.style.left = Math.random() * 100 + "vw";
+        meme.style.animationDuration = Math.random() * 2 + 3 + "s";
+
+        document.body.appendChild(meme);
+
+        setTimeout(() => meme.remove(), 6000);
+      }
+
+      function spawnInsult() {
+        const insult = document.createElement("div");
+        insult.className = "insult";
+        insult.textContent =
+          insults[Math.floor(Math.random() * insults.length)];
+
+        insult.style.left = Math.random() * 80 + 10 + "vw";
+        insult.style.top = "60vh";
+        insult.style.fontSize = chaosLevel * 0.3 + 1.5 + "rem";
+
+        document.body.appendChild(insult);
+
+        setTimeout(() => insult.remove(), 3000);
+      }
+
+      // Easter egg: Click the level counter
+      document.getElementById("chaosLevel").addEventListener("click", () => {
+        document.body.classList.add("glitch");
+        setTimeout(() => document.body.classList.remove("glitch"), 800);
+      });
+    </script>
+  </body>
+</html>
