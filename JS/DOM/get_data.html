@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+</head>
+<body>
+    <p id="username"></p>
+    <p id="gender"></p>
+    <p id="position"></p>
+    <p id="status"></p>
+    <p id="gather_info"></p>
+
+    <button id="btn_click">Click for info</button>
+
+    <script>
+        const name = document.getElementById("username");
+        const gender = document.getElementById("gender");
+        const position = document.getElementById("position");
+        const status = document.getElementById("status");
+        const gather = document.getElementById("gather_info");
+        const btn = document.getElementById("btn_click");
+
+        btn.addEventListener("click", () => {
+            name.textContent = "Mith";
+            gender.textContent = "Male";
+            position.textContent = "Frontend Developer";
+            status.textContent = "Online";
+            gather.innerText = `My name is ${name.textContent}, ${gender.textContent}, ${position.textContent}, Status: ${status.textContent}`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forEach</title>
+</head>
+<body>
+    <!-- main content -->
+     
+
+    <!-- script -->
+     <script>
+        //forEach doesn't return anything useful
+        const numbers =[24,64,77,33,56];
+        for( let index in numbers){
+            console.log(`Index value[${index}] : ${numbers[index]}`)
+        }
+            //  value    index
+        for(let value in numbers){
+            console.log("Array value: "+value);
+        };
+                       //value 0
+        numbers.forEach((value,index)=>{
+            console.log(`Index value[${index}]: ${value}  `)
+            //Value of the index
+            console.log(value)
+            //Index of the value
+            console.log(index)
+        })
+     </script>
+</body>
+</html>

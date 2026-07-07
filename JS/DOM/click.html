@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Click Me</title>
+  </head>
+  <style>
+    body{
+        transition: all 0.5s ease;
+    }
+  </style>
+  <body>
+    <!-- main content -->
+    
+    <button id="click_me">click</button>
+    <!-- script -->
+    <script>
+      const btn1 = document.getElementById("click_me");
+      btn1.addEventListener("click", () => {
+        if (document.body.style.backgroundColor === "black") {
+          document.body.style.backgroundColor = "white";
+        } else {
+          document.body.style.backgroundColor = "black";
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <!-- main content -->
+    <div id="h1"> Ma Boi</div>
+    <span class="span_sl">Query</span>
+    <span class="span_sl">Query1</span>
+    <span class="span_sl">Query2</span>
+    <span class="span_sl">Query3</span>
+    <!-- script -->
+     <script>
+        //Can access only id
+        const text = document.getElementById("h1")
+        console.log(text)
+        //Both id && class
+        const sl = document.querySelector('.span_sl')
+        console.log(sl)
+        //Select all the element use with loop
+        const all = document.querySelectorAll('.span_sl')
+        console.log(all)
+     </script>
+</body>
+</html>

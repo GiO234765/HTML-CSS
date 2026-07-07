@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Function</title>
+</head>
+<body>
+    <!-- Main content -->
+    <!-- script -->
+     <script>
+        //Simple function
+        const sum =function(){
+            let a,b;
+            a=10;   b=20;
+            return a+b;
+        }
+        //Call the simple function 
+        console.log(sum());
+
+        //Arrow function
+        const user = () =>{
+            let user_name;
+            return user_name="KhmerCoder";
+        }
+        console.log(user());
+
+        const multiply = (a,b) => a*b;
+        //Call the function
+        console.log(multiply(6,7));
+        
+     </script>
+</body>
+</html>

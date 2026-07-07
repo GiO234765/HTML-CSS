@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slide</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"></script>
+  </head>
+  <!-- style -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .carousel {
+      width: 500px;
+      height: 500px;
+      width: full;
+      border: 1px solid black;
+    }
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+      border: 1px solid black;
+    }
+    span {
+      color: black;
+    }
+  </style>
+  <body>
+    <!-- main content -->
+    <div class="main-content m-auto mt-5">
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="https://i.pinimg.com/736x/ef/ae/03/efae039016997e124810be03cb990f27.jpg"
+              class="d-block w-100"
+              alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://i.pinimg.com/736x/31/46/0e/31460e075e62db65c66501a6d1e9c640.jpg"
+              class="d-block w-100"
+              alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://i.pinimg.com/736x/ca/8e/da/ca8eda7ecda6363f6f40e9fbaca51435.jpg"
+              class="d-block w-100"
+              alt="..." />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden text-dark">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="main-content">
+      <div id="carouselExampleFade" class="carousel slide carousel-fade">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="https://i.pinimg.com/736x/ef/ae/03/efae039016997e124810be03cb990f27.jpg"
+              class="d-block w-100"
+              alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://i.pinimg.com/736x/31/46/0e/31460e075e62db65c66501a6d1e9c640.jpg"
+              class="d-block w-100"
+              alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://i.pinimg.com/736x/ca/8e/da/ca8eda7ecda6363f6f40e9fbaca51435.jpg"
+              class="d-block w-100"
+              alt="..." />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleFade"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleFade"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

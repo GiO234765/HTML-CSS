@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ternary Operator</title>
+  </head>
+  <body>
+    <script>
+      let age = 20;
+      //Simple if else statement can use without else but Ternary Operator can't use without :
+      if (age >= 18) {
+        console.log("You are a adult!");
+      } else {
+        console.log("You are a minor!");
+      }
+
+      // Ternary Operator can't use without :
+      age >= 18
+        ? console.log("You are a adult!")
+        : console.log(" You are a minor!");
+
+      // if and elseif statement can use without else but Ternary Operator can't use without :
+      let time = 10;
+      if (time < 12) {
+        console.log("Good Morning!");
+      }
+      if (time >= 12 && time < 18) {
+        console.log("Good Afternoon!");
+      }
+      if (time >= 18) {
+        console.log("Good Evening!");
+      }
+      // else if statement
+      if (time < 12) {
+        console.log("Good morning!");
+      } else if (time >= 12 && time < 18) {
+        console.log("Good Afternoon!");
+      } else {
+        console.log("Good Evening!");
+      }
+      // In Ternary Operator
+      time < 12
+        ? console.log("Good Morning!")
+        : time >= 12 && time < 18
+          ? console.log("Good Afternoon!")
+          : console.log("Good Evening!");
+    </script>
+  </body>
+</html>
