@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url("https://i.pinimg.com/originals/8f/f9/2d/8ff92d2b0d0d72d26346e62cc39ee712.gif")
+          center/cover no-repeat;
+        overflow: hidden;
+      }
+
+      .main_container {
+        width: 750px;
+        display: flex;
+        overflow: hidden;
+        border-radius: 25px;
+        background: white;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        position: relative;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0.8);
+
+        transition: all 0.4s ease;
+      }
+
+      .main_container.show {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+      }
+
+      .left {
+        width: 50%;
+        background: url("https://i.pinimg.com/originals/bb/52/20/bb5220dccb70fed4d9bd101efad8476d.gif")
+          center/cover no-repeat;
+      }
+
+      .right {
+        width: 50%;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.95);
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 6px;
+        margin-bottom: 18px;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        outline: none;
+        transition: 0.3s;
+        box-sizing: border-box;
+      }
+
+      input:focus {
+        border-color: #ec4899;
+      }
+
+      .register-btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: #ec4899;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .register-btn:hover {
+        background: #db2777;
+        transform: translateY(-2px);
+      }
+
+      .login-btn {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        border: 2px solid #ec4899;
+        border-radius: 10px;
+        background: white;
+        color: #ec4899;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .login-btn:hover {
+        background: #ec4899;
+        color: white;
+      }
+
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 28px;
+        cursor: pointer;
+        color: #666;
+      }
+
+      .close:hover {
+        color: red;
+      }
+
+      #New_user {
+        padding: 14px 40px;
+        border: none;
+        border-radius: 40px;
+        background: #ec4899;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      #New_user:hover {
+        background: #db2777;
+        transform: scale(1.05);
+      }
+      .btn{
+        margin-left: 40%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Button -->
+    <button id="New_user" class="btn">New User?</button>
+
+    <!-- Register Form -->
+    <div class="main_container" id="registerForm">
+      <span class="close" id="closeForm">&times;</span>
+
+      <div class="left"></div>
+
+      <div class="right">
+        <h1 class="text-3xl font-bold text-pink-500 mb-2">Create Account</h1>
+
+        <p class="text-gray-500 mb-8">Register to continue</p>
+
+        <label>Username</label>
+        <input type="text" placeholder="Enter username" />
+
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter full name" />
+
+        <label>Email</label>
+        <input type="email" placeholder="Enter email" />
+
+        <label>Password</label>
+        <input type="password" placeholder="Enter password" />
+
+        <button class="register-btn">Register</button>
+
+        <button class="login-btn">Already have an account? Login</button>
+      </div>
+    </div>
+
+    <script>
+      const newUserBtn = document.getElementById("New_user");
+      const registerForm = document.getElementById("registerForm");
+      const closeBtn = document.getElementById("closeForm");
+
+      newUserBtn.addEventListener("click", function () {
+        registerForm.classList.add("show");
+        newUserBtn.style.display = "none";
+      });
+
+      closeBtn.addEventListener("click", function () {
+        registerForm.classList.remove("show");
+        newUserBtn.style.display = "block";
+      });
+    </script>
+  </body>
+</html>

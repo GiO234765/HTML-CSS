@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON</title>
+  </head>
+  <!-- style -->
+  <style></style>
+  <body>
+    <!-- main container  -->
+    <div class="main_container">
+      <!-- Student JSON -->
+    </div>
+    <!-- script -->
+    <script>
+      const stu_info = {
+        id: 1,
+        student_id: "ST001",
+        name: "Muzyy",
+        age: 20,
+        gender: "Male",
+        email: "muzyy@gmail.com",
+        skills: ["Java", "JavaScript", "MySQL"],
+      };
+
+      // Object -> JSON String
+      const jsonString = JSON.stringify(stu_info);
+
+      console.log(jsonString);
+
+      // JSON String -> Object
+      const stu = JSON.parse(jsonString);
+      console.log(stu.name);
+      console.log(stu.skills[0]);
+    </script>
+  </body>
+</html>

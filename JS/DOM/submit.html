@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Registration</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body
+    class="bg-linear-to-r from-blue-500 to-purple-600 min-h-screen flex justify-center items-center">
+    <div class="bg-white shadow-2xl rounded-2xl p-8 w-[700px]">
+      <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">
+        User Registration
+      </h1>
+
+      <!-- Form -->
+      <div class="space-y-4">
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter Username"
+          class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter Email"
+          class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <button
+          id="submit"
+          class="w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+          Submit
+        </button>
+      </div>
+
+      <!-- Table -->
+      <div class="mt-8">
+        <h2 class="text-xl font-semibold mb-3 text-gray-700">User List</h2>
+
+        <table class="w-full border border-gray-300 border-collapse">
+          <thead class="bg-blue-600 text-white">
+            <tr>
+              <th class="border p-3">#</th>
+              <th class="border p-3">Username</th>
+              <th class="border p-3">Email</th>
+            </tr>
+          </thead>
+
+          <tbody id="tableBody">
+            <!-- Rows will be added here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      const username = document.getElementById("username");
+      const email = document.getElementById("email");
+      const submit = document.getElementById("submit");
+      const tableBody = document.getElementById("tableBody");
+      let count = 1;
+      submit.addEventListener("click", () => {
+        if (username.value.trim() === "" || email.value.trim() === "") {
+          alert("Please enter username and email.");
+          return;
+        }
+
+        // Create a new row
+        const row = document.createElement("tr");
+        row.className = "hover:bg-gray-100";
+        row.innerHTML = `
+        <td class="border p-3 text-center">${count}</td>
+        <td class="border p-3">${username.value}</td>
+        <td class="border p-3">${email.value}</td>
+    `;
+
+        // Add row to table
+        tableBody.appendChild(row);
+
+        count++;
+        username.value = "";
+        email.value = "";
+        username.focus();
+      });
+    </script>
+  </body>
+</html>
