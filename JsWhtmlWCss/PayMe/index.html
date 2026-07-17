@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Will u pay me?? 😂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet" />
+    <style>
+      :root {
+        --bg-1: #170f27;
+        --bg-2: #241536;
+        --pink: #ff2e7e;
+        --lime: #d4ff3d;
+        --amber: #ffb800;
+        --cream: #fff6e8;
+        --muted: #b9acd1;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            circle at 15% 15%,
+            rgba(255, 46, 126, 0.25),
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 85% 80%,
+            rgba(212, 255, 61, 0.15),
+            transparent 50%
+          ),
+          var(--bg-1);
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--cream);
+        position: relative;
+      }
+
+      /* subtle dot grid texture */
+      body::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.05) 1px,
+          transparent 1px
+        );
+        background-size: 22px 22px;
+        pointer-events: none;
+      }
+
+      .stage {
+        position: relative;
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px 16px;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 420px;
+        background: linear-gradient(180deg, var(--bg-2), #1b1029);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 28px;
+        padding: 28px 26px 34px;
+        text-align: center;
+        box-shadow:
+          0 30px 60px -20px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+        position: relative;
+        z-index: 2;
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--lime);
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      h1 {
+        font-family: "Fredoka", sans-serif;
+        font-weight: 700;
+        font-size: clamp(28px, 7vw, 36px);
+        line-height: 1.08;
+        margin: 0 0 6px;
+        color: var(--cream);
+      }
+
+      h1 span {
+        color: var(--pink);
+      }
+
+      .caption {
+        font-size: 14.5px;
+        color: var(--muted);
+        min-height: 38px;
+        margin: 0 0 18px;
+        transition: opacity 0.15s ease;
+      }
+
+      .meme-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1/1;
+        border-radius: 18px;
+        overflow: hidden;
+        margin-bottom: 18px;
+        background: #0d0817;
+        box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.6);
+      }
+
+      #meme {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.25s ease;
+      }
+
+      .tag {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(4px);
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        padding: 5px 10px;
+        border-radius: 100px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--lime);
+        border: 1px solid rgba(212, 255, 61, 0.35);
+      }
+
+      /* Guilt meter — the signature element */
+      .guilt {
+        text-align: left;
+        margin-bottom: 22px;
+      }
+
+      .guilt-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-size: 11.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+
+      .guilt-amount {
+        font-family: "Fredoka", sans-serif;
+        font-size: 15px;
+        color: var(--amber);
+        font-weight: 600;
+      }
+
+      .meter {
+        height: 10px;
+        border-radius: 100px;
+        background: rgba(255, 255, 255, 0.08);
+        overflow: hidden;
+      }
+
+      .meter-fill {
+        height: 100%;
+        width: 8%;
+        border-radius: 100px;
+        background: linear-gradient(
+          90deg,
+          var(--lime),
+          var(--amber),
+          var(--pink)
+        );
+        transition: width 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.3);
+      }
+
+      .actions {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: 64px;
+      }
+
+      button {
+        font-family: "Fredoka", sans-serif;
+        font-weight: 600;
+        border: none;
+        border-radius: 100px;
+        cursor: pointer;
+        font-size: 18px;
+        padding: 16px 30px;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      #yes {
+        background: var(--lime);
+        color: #12240a;
+        box-shadow: 0 10px 22px -8px rgba(212, 255, 61, 0.55);
+      }
+      #yes:hover {
+        transform: translateY(-2px) scale(1.03);
+      }
+      #yes:active {
+        transform: translateY(0) scale(0.98);
+      }
+
+      #no {
+        background: transparent;
+        color: var(--pink);
+        border: 2px solid rgba(255, 46, 126, 0.6);
+        position: fixed;
+        z-index: 50;
+      }
+
+      .hint {
+        margin-top: 16px;
+        font-size: 11.5px;
+        color: var(--muted);
+        opacity: 0.7;
+      }
+
+      /* Confetti / cash rain for the YES screen */
+      .win {
+        position: relative;
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .win h1 {
+        font-size: clamp(30px, 8vw, 46px);
+        color: var(--lime);
+      }
+
+      .win p {
+        color: var(--muted);
+        font-size: 15px;
+        max-width: 320px;
+        margin: 6px 0 22px;
+      }
+
+      .win img {
+        width: 280px;
+        max-width: 70vw;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+      }
+
+      .bill {
+        position: fixed;
+        top: -40px;
+        font-size: 26px;
+        animation: fall linear forwards;
+        z-index: 5;
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(110vh) rotate(360deg);
+          opacity: 0.9;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .card {
+          padding: 22px 18px 28px;
+        }
+        button {
+          padding: 14px 22px;
+          font-size: 16px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage" id="stage">
+      <div class="card">
+        <div class="eyebrow">Exhibit A</div>
+        <h1>Will u pay me<span>??</span></h1>
+        <p class="caption" id="caption">it's been 3 weeks bro 💀</p>
+
+        <div class="meme-wrap">
+          <span class="tag" id="tag">evidence #1</span>
+          <img
+            id="meme"
+            src="https://i.pinimg.com/736x/3c/6e/d6/3c6ed6b6b0a8264340046b6a0c255008.jpg"
+            alt="meme evidence" />
+        </div>
+
+        <div class="guilt">
+          <div class="guilt-row">
+            <span>Guilt meter</span>
+            <span class="guilt-amount" id="amount">$0 owed*</span>
+          </div>
+          <div class="meter"><div class="meter-fill" id="meterFill"></div></div>
+        </div>
+
+        <div class="actions">
+          <button id="yes">YES ❤️</button>
+          <button id="no">NO 😏</button>
+        </div>
+
+        <div class="hint">*interest calculated in real time, don't ask how</div>
+      </div>
+    </div>
+
+    <script>
+      const memes = [
+        "https://i.pinimg.com/originals/c6/a2/e6/c6a2e63b9ca62ad66e799255d95a0b25.gif",
+        "https://i.pinimg.com/736x/87/05/19/87051939c904c85d4244237993cedb13.jpg",
+        "https://i.pinimg.com/736x/98/92/8d/98928d8450207f417b9f95cfbfe2ef1e.jpg",
+        "https://i.pinimg.com/originals/b0/b2/4b/b0b24bb0e8194aa0135c943f72955a5b.gif",
+        "https://i.pinimg.com/736x/fb/79/3f/fb793f7d3c95617ff71e3a7705feb417.jpg  ",
+        "https://i.pinimg.com/736x/e0/79/66/e07966003fd659c6d3b7a5d61adeaf67.jpg",
+        "https://i.pinimg.com/736x/66/6b/25/666b25e6b9711d8b097b68d99e80d8b4.jpg",
+      ];
+
+      const captions = [
+        "it's been 3 weeks bro 💀",
+        "ok that's a bold choice",
+        "the interest is compounding as we speak",
+        "my landlord is also asking questions",
+        "this is going in the group chat",
+        "you've officially unlocked evidence #6",
+        "at this point it's basically a hobby",
+        "the guilt meter is judging you",
+        "im telling your mom",
+        "legally speaking, this is a paper trail",
+      ];
+
+      let index = 0;
+      let clicks = 0;
+
+      const img = document.getElementById("meme");
+      const tag = document.getElementById("tag");
+      const caption = document.getElementById("caption");
+      const noBtn = document.getElementById("no");
+      const yesBtn = document.getElementById("yes");
+      const meterFill = document.getElementById("meterFill");
+      const amount = document.getElementById("amount");
+
+      function placeNoButton() {
+        const maxX = window.innerWidth - noBtn.offsetWidth - 16;
+        const maxY = window.innerHeight - noBtn.offsetHeight - 16;
+        const x = Math.max(16, Math.random() * maxX);
+        const y = Math.max(16, Math.random() * maxY);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+      }
+
+      // initial placement, anchored near the card so it doesn't look lost
+      noBtn.style.position = "fixed";
+      window.addEventListener("load", () => {
+        const rect = yesBtn.getBoundingClientRect();
+        noBtn.style.left = rect.right + 14 + "px";
+        noBtn.style.top = rect.top + "px";
+      });
+
+      noBtn.addEventListener("click", () => {
+        clicks++;
+        index = (index + 1) % memes.length;
+        img.src = memes[index];
+        img.style.transform = "scale(1.06)";
+        setTimeout(() => {
+          img.style.transform = "scale(1)";
+        }, 200);
+
+        tag.textContent = "evidence #" + (index + 1);
+        caption.textContent =
+          captions[Math.min(clicks - 1, captions.length - 1)];
+
+        const pct = Math.min(8 + clicks * 9, 100);
+        meterFill.style.width = pct + "%";
+        amount.textContent = "$" + clicks * 47 + " owed*";
+
+        // shrink the button slightly each dodge, floor so it stays tappable
+        const scale = Math.max(0.62, 1 - clicks * 0.035);
+        noBtn.style.transform = `scale(${scale})`;
+
+        placeNoButton();
+      });
+
+      function spawnBills(count) {
+        const emojis = ["💸", "💵", "🤑", "💰"];
+        for (let i = 0; i < count; i++) {
+          const el = document.createElement("div");
+          el.className = "bill";
+          el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+          el.style.left = Math.random() * 100 + "vw";
+          el.style.animationDuration = 2.2 + Math.random() * 1.6 + "s";
+          el.style.fontSize = 18 + Math.random() * 20 + "px";
+          document.body.appendChild(el);
+          setTimeout(() => el.remove(), 4000);
+        }
+      }
+
+      yesBtn.addEventListener("click", () => {
+        spawnBills(28);
+        document.getElementById("stage").innerHTML = `
+    <div class="win">
+      <div class="eyebrow" style="color:var(--pink)">case closed</div>
+      <h1>Yay!! Thank You!! ❤️</h1>
+      <p>the guilt meter has been reset to zero. your honor has been restored.</p>
+      <img src="https://i.pinimg.com/originals/9e/3c/6d/9e3c6d90dc5b7b67388b7813e7fbf50b.gif" alt="thank you"><tr>  
+      <img src="https://i.postimg.cc/GtZ3cx4F/image.png" alt="thank you">
+    </div>
+  `;
+      });
+    </script>
+  </body>
+</html>
